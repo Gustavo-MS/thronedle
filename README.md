@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Thronedle
 
-## Getting Started
+A Game of Thrones-themed daily guessing game inspired by Wordle. Test your knowledge of the Seven Kingdoms with two exciting game modes!
 
-First, run the development server:
+🎮 Play now: [Thronedle](https://thronedle-cj5e7lqxv-gustavos-projects-51936f20.vercel.app)
+
+## Game Modes
+
+### Character Game
+- Guess the mystery character from Game of Thrones in 8 attempts
+- Get feedback on each guess with color-coded hints:
+  - 🟩 Green: Exact match
+  - 🟥 Red: No match
+- Compare attributes like House, Status, Gender, and Region
+- Features character portraits for easy recognition
+
+### Quote Game
+- Guess who said the daily quote in 3 attempts
+- Includes quotes from iconic moments in the series
+- Shows the season and episode information
+- Features character portraits for each guess
+
+## Features
+
+- 🎨 Authentic Game of Thrones styling with official font
+- 💾 Progress saves automatically
+- 📱 Fully responsive design
+- 🌓 Dark theme optimized
+- 🎯 Daily challenges that sync for all players
+- 📊 Shareable results
+- ⌨️ Keyboard navigation support
+- ♿ Accessibility features
+
+## Technical Details
+
+Built with:
+- Next.js 13 App Router
+- React 19
+- TypeScript
+- Tailwind CSS
+- Vercel Hosting
+
+## Development
+
+To run the project locally:
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Contributing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Feel free to submit issues and enhancement requests!
 
-## Learn More
+## Credits
 
-To learn more about Next.js, take a look at the following resources:
+- Game of Thrones font from [FontMeme](https://fontmeme.com/fonts/game-of-thrones-font/)
+- Character data and quotes from Game of Thrones TV series
+- Background images and character portraits from HBO's Game of Thrones
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License.
