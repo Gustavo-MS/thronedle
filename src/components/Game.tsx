@@ -114,7 +114,7 @@ export default function Game() {
 
   return (
     <div className="max-w-6xl mx-auto p-6 bg-black/80 rounded-lg shadow-2xl backdrop-blur-sm">
-      <h1 className="text-5xl font-bold text-center mb-8 text-yellow-500 font-serif">Thronedle</h1>
+      <h1 className="text-5xl font-bold text-center mb-8 text-yellow-500 got-font">Thronedle</h1>
       
       {/* Game input */}
       <div className="mb-8">
