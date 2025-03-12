@@ -1,5 +1,5 @@
-import Game from '@/components/Game';
-import QuoteGame from '@/components/QuoteGame';
+import Game from '../components/Game';
+import QuoteGame from '../components/QuoteGame';
 
 export default function Home() {
   return (
