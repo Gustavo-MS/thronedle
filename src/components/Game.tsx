@@ -113,99 +113,95 @@ export default function Game() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-6 bg-black/80 rounded-lg shadow-2xl backdrop-blur-sm">
-      <h1 className="text-5xl font-bold text-center mb-8 text-yellow-500 got-font">Thronedle</h1>
+    <div className="max-w-6xl mx-auto p-3 sm:p-6 bg-black/80 rounded-lg shadow-2xl backdrop-blur-sm">
+      <h1 className="text-3xl sm:text-5xl font-bold text-center mb-4 sm:mb-8 text-yellow-500 got-font">Thronedle</h1>
       
       {/* Game input */}
-      <div className="mb-8">
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={(e) => handleSearch(e.target.value)}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          placeholder="Enter a character name..."
-          className="w-full p-3 border-2 border-gray-700 rounded-lg bg-gray-900 text-white placeholder-gray-400 focus:outline-none focus:border-yellow-500"
-          disabled={gameState.gameOver}
-        />
-        
-        {/* Suggestions */}
-        {suggestions.length > 0 && (
-          <div className="mt-2 border border-gray-700 rounded-lg bg-gray-900 shadow-xl overflow-hidden max-h-80 overflow-y-auto">
-            {suggestions.map((character) => (
-              <div
-                key={character.id}
-                onClick={() => handleGuess(character)}
-                className="p-3 hover:bg-gray-800 cursor-pointer flex items-center gap-3 border-b border-gray-700 last:border-none"
-              >
-                <div className="w-12 h-12 relative rounded-full overflow-hidden">
-                  <Image
-                    src={character.image}
-                    alt={character.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <span className="text-white">{character.name}</span>
+      <input
+        type="text"
+        value={searchQuery}
+        onChange={(e) => handleSearch(e.target.value)}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        placeholder="Enter a character name..."
+        className="w-full p-2 sm:p-3 text-sm sm:text-base border-2 border-gray-700 rounded-lg bg-gray-900 text-white placeholder-gray-400 focus:outline-none focus:border-yellow-500"
+        disabled={gameState.gameOver}
+      />
+      
+      {/* Suggestions */}
+      {suggestions.length > 0 && (
+        <div className="mt-2 border border-gray-700 rounded-lg bg-gray-900 shadow-xl overflow-hidden max-h-60 sm:max-h-80 overflow-y-auto">
+          {suggestions.map((character) => (
+            <div
+              key={character.id}
+              onClick={() => handleGuess(character)}
+              className="p-2 sm:p-3 hover:bg-gray-800 cursor-pointer flex items-center gap-2 sm:gap-3 border-b border-gray-700 last:border-none"
+            >
+              <div className="w-8 h-8 sm:w-12 sm:h-12 relative rounded-full overflow-hidden">
+                <Image
+                  src={character.image}
+                  alt={character.name}
+                  fill
+                  className="object-cover"
+                />
               </div>
-            ))}
-          </div>
-        )}
-      </div>
+              <span className="text-sm sm:text-base text-white">{character.name}</span>
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Column Headers */}
-      <div className="grid grid-cols-5 gap-3 mb-3">
+      <div className="grid grid-cols-5 gap-1 sm:gap-3 mt-3 mb-2 sm:mb-3">
         {columnHeaders.map((header) => (
-          <div key={header.key} className="p-3 text-yellow-500 font-bold text-center bg-gray-900/50 rounded-lg">
+          <div key={header.key} className="p-1 sm:p-3 text-xs sm:text-base text-yellow-500 font-bold text-center bg-gray-900/50 rounded-lg">
             {header.label}
           </div>
         ))}
       </div>
 
       {/* Guesses */}
-      <div className="space-y-3">
-        {gameState.guesses.map((guess, index) => (
-          <div key={index} className="grid grid-cols-5 gap-3">
-            <div className={`flex items-center gap-2 p-3 rounded-lg ${getHintColor(guess, 'name')}`}>
-              <div className="w-16 h-16 relative rounded-full overflow-hidden flex-shrink-0">
-                <Image
-                  src={guess.image}
-                  alt={guess.name}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <span className="text-white font-medium truncate">{guess.name}</span>
+      {gameState.guesses.map((guess, index) => (
+        <div key={index} className="grid grid-cols-5 gap-1 sm:gap-3 mb-1 sm:mb-3">
+          <div className={`flex items-center gap-1 sm:gap-2 p-1 sm:p-3 rounded-lg ${getHintColor(guess, 'name')}`}>
+            <div className="w-8 h-8 sm:w-16 sm:h-16 relative rounded-full overflow-hidden flex-shrink-0">
+              <Image
+                src={guess.image}
+                alt={guess.name}
+                fill
+                className="object-cover"
+              />
             </div>
-            {['house', 'status', 'gender', 'region'].map((prop) => (
-              <div
-                key={prop}
-                className={`p-3 rounded-lg ${getHintColor(guess, prop as keyof Character)} text-white min-h-[5rem] flex items-center justify-center text-center`}
-              >
-                {guess[prop as keyof Character]}
-              </div>
-            ))}
+            <span className="text-xs sm:text-base text-white font-medium truncate">{guess.name}</span>
           </div>
-        ))}
-      </div>
+          {['house', 'status', 'gender', 'region'].map((prop) => (
+            <div
+              key={prop}
+              className={`p-1 sm:p-3 rounded-lg ${getHintColor(guess, prop as keyof Character)} text-white text-xs sm:text-base min-h-[2rem] sm:min-h-[5rem] flex items-center justify-center text-center`}
+            >
+              {guess[prop as keyof Character]}
+            </div>
+          ))}
+        </div>
+      ))}
 
       {/* Empty guess slots */}
       {Array.from({ length: 8 - gameState.guesses.length }).map((_, index) => (
-        <div key={index} className="grid grid-cols-5 gap-3 mt-3">
+        <div key={index} className="grid grid-cols-5 gap-1 sm:gap-3 mb-1 sm:mb-3">
           {Array.from({ length: 5 }).map((_, colIndex) => (
-            <div key={colIndex} className="p-3 rounded-lg bg-gray-800/50 border border-gray-700 min-h-[5rem]"></div>
+            <div key={colIndex} className="p-1 sm:p-3 rounded-lg bg-gray-800/50 border border-gray-700 min-h-[2rem] sm:min-h-[5rem]"></div>
           ))}
         </div>
       ))}
 
       {/* Game Over Message */}
       {gameState.gameOver && (
-        <div className="mt-8 text-center bg-gray-900/90 p-8 rounded-lg border border-gray-700">
-          <h2 className="text-3xl font-bold mb-4 text-yellow-500">
+        <div className="mt-4 sm:mt-8 text-center bg-gray-900/90 p-4 sm:p-8 rounded-lg border border-gray-700">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-4 text-yellow-500">
             {gameState.won ? 'You Won!' : 'Game Over!'}
           </h2>
-          <div className="mb-6 flex justify-center">
-            <div className="w-40 h-40 relative rounded-lg overflow-hidden">
+          <div className="mb-4 sm:mb-6 flex justify-center">
+            <div className="w-24 h-24 sm:w-40 sm:h-40 relative rounded-lg overflow-hidden">
               <Image
                 src={dailyCharacter?.image || ''}
                 alt={dailyCharacter?.name || ''}
@@ -214,7 +210,7 @@ export default function Game() {
               />
             </div>
           </div>
-          <p className="text-xl text-white mb-4">
+          <p className="text-base sm:text-xl text-white mb-4">
             The character was: <span className="font-bold text-yellow-500">{dailyCharacter?.name}</span>
           </p>
           <button
@@ -225,7 +221,7 @@ export default function Game() {
                 `${gameState.won ? gameState.guesses.length : 'X'}/8 guesses`
               );
             }}
-            className="px-6 py-3 bg-yellow-500 text-black font-bold rounded-lg hover:bg-yellow-400 transition-colors"
+            className="px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base bg-yellow-500 text-black font-bold rounded-lg hover:bg-yellow-400 transition-colors"
           >
             Share Result
           </button>

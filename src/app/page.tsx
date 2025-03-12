@@ -34,7 +34,7 @@ export default function Home() {
   if (!mounted) return null;
 
   return (
-    <main className="min-h-screen py-8 px-4" style={{
+    <main className="min-h-screen py-4 sm:py-8 px-2 sm:px-4" style={{
       backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('/images/background.jpg')`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
@@ -42,8 +42,8 @@ export default function Home() {
       backgroundAttachment: 'fixed',
     }}>
       {/* Tab Navigation */}
-      <div className="max-w-6xl mx-auto mb-6" role="tablist">
-        <div className="flex gap-2 p-1 bg-gray-900/30 backdrop-blur-sm rounded-lg">
+      <div className="max-w-6xl mx-auto mb-4 sm:mb-6" role="tablist">
+        <div className="flex gap-1 sm:gap-2 p-1 bg-gray-900/30 backdrop-blur-sm rounded-lg">
           <button
             role="tab"
             aria-selected={activeTab === 'character'}
@@ -51,7 +51,7 @@ export default function Home() {
             tabIndex={activeTab === 'character' ? 0 : -1}
             onClick={() => handleTabChange('character')}
             onKeyDown={(e) => handleKeyDown(e, 'character')}
-            className={`flex-1 px-6 py-3 rounded-lg font-bold text-lg transition-all duration-200 ${
+            className={`flex-1 px-3 sm:px-6 py-2 sm:py-3 rounded-lg font-bold text-sm sm:text-lg transition-all duration-200 ${
               activeTab === 'character'
                 ? 'bg-yellow-500 text-black shadow-lg'
                 : 'bg-transparent text-yellow-500 hover:bg-gray-900/50'
@@ -66,7 +66,7 @@ export default function Home() {
             tabIndex={activeTab === 'quote' ? 0 : -1}
             onClick={() => handleTabChange('quote')}
             onKeyDown={(e) => handleKeyDown(e, 'quote')}
-            className={`flex-1 px-6 py-3 rounded-lg font-bold text-lg transition-all duration-200 ${
+            className={`flex-1 px-3 sm:px-6 py-2 sm:py-3 rounded-lg font-bold text-sm sm:text-lg transition-all duration-200 ${
               activeTab === 'quote'
                 ? 'bg-yellow-500 text-black shadow-lg'
                 : 'bg-transparent text-yellow-500 hover:bg-gray-900/50'

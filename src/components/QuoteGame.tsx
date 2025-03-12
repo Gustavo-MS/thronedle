@@ -98,57 +98,55 @@ export default function QuoteGame() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-6 bg-black/80 rounded-lg shadow-2xl backdrop-blur-sm">
-      <h2 className="text-3xl font-bold text-center mb-8 text-yellow-500 got-font">Quote of the Day</h2>
+    <div className="max-w-6xl mx-auto p-3 sm:p-6 bg-black/80 rounded-lg shadow-2xl backdrop-blur-sm">
+      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-8 text-yellow-500 got-font">Quote of the Day</h2>
       
-      <div className="mb-8 p-6 bg-gray-900/50 rounded-lg border-2 border-gray-700">
-        <p className="text-xl text-white text-center italic">&ldquo;{dailyQuote.text}&rdquo;</p>
-        <p className="text-sm text-gray-400 text-center mt-2">Season {dailyQuote.season}, Episode: {dailyQuote.episode}</p>
+      <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-gray-900/50 rounded-lg border-2 border-gray-700">
+        <p className="text-base sm:text-xl text-white text-center italic">&ldquo;{dailyQuote.text}&rdquo;</p>
+        <p className="text-xs sm:text-sm text-gray-400 text-center mt-2">Season {dailyQuote.season}, Episode: {dailyQuote.episode}</p>
       </div>
 
       {/* Game input */}
-      <div className="mb-8">
-        <p className="text-white mb-2">Who said this quote? ({3 - gameState.guesses.length} guesses remaining)</p>
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={(e) => handleSearch(e.target.value)}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          placeholder="Enter a character name..."
-          className="w-full p-3 border-2 border-gray-700 rounded-lg bg-gray-900 text-white placeholder-gray-400 focus:outline-none focus:border-yellow-500"
-          disabled={gameState.gameOver}
-        />
-        
-        {/* Suggestions */}
-        {suggestions.length > 0 && (
-          <div className="mt-2 border border-gray-700 rounded-lg bg-gray-900 shadow-xl overflow-hidden max-h-80 overflow-y-auto">
-            {suggestions.map((character) => (
-              <div
-                key={character.id}
-                onClick={() => handleGuess(character)}
-                className="p-3 hover:bg-gray-800 cursor-pointer flex items-center gap-3 border-b border-gray-700 last:border-none"
-              >
-                <div className="w-12 h-12 relative rounded-full overflow-hidden">
-                  <Image
-                    src={character.image}
-                    alt={character.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <span className="text-white">{character.name}</span>
+      <p className="text-sm sm:text-base text-white mb-2">Who said this quote? ({3 - gameState.guesses.length} guesses remaining)</p>
+      <input
+        type="text"
+        value={searchQuery}
+        onChange={(e) => handleSearch(e.target.value)}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        placeholder="Enter a character name..."
+        className="w-full p-2 sm:p-3 text-sm sm:text-base border-2 border-gray-700 rounded-lg bg-gray-900 text-white placeholder-gray-400 focus:outline-none focus:border-yellow-500"
+        disabled={gameState.gameOver}
+      />
+      
+      {/* Suggestions */}
+      {suggestions.length > 0 && (
+        <div className="mt-2 border border-gray-700 rounded-lg bg-gray-900 shadow-xl overflow-hidden max-h-60 sm:max-h-80 overflow-y-auto">
+          {suggestions.map((character) => (
+            <div
+              key={character.id}
+              onClick={() => handleGuess(character)}
+              className="p-2 sm:p-3 hover:bg-gray-800 cursor-pointer flex items-center gap-2 sm:gap-3 border-b border-gray-700 last:border-none"
+            >
+              <div className="w-8 h-8 sm:w-12 sm:h-12 relative rounded-full overflow-hidden">
+                <Image
+                  src={character.image}
+                  alt={character.name}
+                  fill
+                  className="object-cover"
+                />
               </div>
-            ))}
-          </div>
-        )}
-      </div>
+              <span className="text-sm sm:text-base text-white">{character.name}</span>
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Previous Guesses */}
-      <div className="space-y-3">
+      <div className="space-y-2 sm:space-y-3 mt-4">
         {gameState.guesses.map((guess, index) => (
-          <div key={index} className={`p-4 rounded-lg ${guess.id === dailyQuote.characterId ? 'bg-green-600' : 'bg-red-600'} flex items-center gap-4`}>
-            <div className="w-16 h-16 relative rounded-full overflow-hidden flex-shrink-0">
+          <div key={index} className={`p-2 sm:p-4 rounded-lg ${guess.id === dailyQuote.characterId ? 'bg-green-600' : 'bg-red-600'} flex items-center gap-2 sm:gap-4`}>
+            <div className="w-10 h-10 sm:w-16 sm:h-16 relative rounded-full overflow-hidden flex-shrink-0">
               <Image
                 src={guess.image}
                 alt={guess.name}
@@ -156,15 +154,15 @@ export default function QuoteGame() {
                 className="object-cover"
               />
             </div>
-            <span className="text-white font-medium">{guess.name}</span>
+            <span className="text-sm sm:text-base text-white font-medium">{guess.name}</span>
           </div>
         ))}
       </div>
 
       {/* Game Over Message */}
       {gameState.gameOver && (
-        <div className="mt-8 text-center bg-gray-900/90 p-8 rounded-lg border border-gray-700">
-          <h2 className="text-3xl font-bold mb-4 text-yellow-500">
+        <div className="mt-4 sm:mt-8 text-center bg-gray-900/90 p-4 sm:p-8 rounded-lg border border-gray-700">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-yellow-500">
             {gameState.won ? 'You Won!' : 'Game Over!'}
           </h2>
           <button
@@ -175,7 +173,7 @@ export default function QuoteGame() {
                 `${gameState.won ? gameState.guesses.length : 'X'}/3 guesses`
               );
             }}
-            className="px-6 py-3 bg-yellow-500 text-black font-bold rounded-lg hover:bg-yellow-400 transition-colors"
+            className="px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base bg-yellow-500 text-black font-bold rounded-lg hover:bg-yellow-400 transition-colors"
           >
             Share Result
           </button>
