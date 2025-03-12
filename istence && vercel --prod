@@ -1,0 +1,29 @@
+[33mcommit 8abc1deeacfeb2af2abcc92fa4c4ea89734a40d2[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Gustavo M.S <33518950+Gustavo-MS@users.noreply.github.com>
+Date:   Wed Mar 12 21:13:01 2025 +0000
+
+    Move quote game to separate tab
+
+[33mcommit d220798067e0722b220c9ee7df262a8476306d7b[m
+Author: Gustavo M.S <33518950+Gustavo-MS@users.noreply.github.com>
+Date:   Wed Mar 12 21:06:13 2025 +0000
+
+    Fix unescaped quotes
+
+[33mcommit eca5a5e3550100e6f57f82d3955b57932a0372e6[m
+Author: Gustavo M.S <33518950+Gustavo-MS@users.noreply.github.com>
+Date:   Wed Mar 12 21:04:07 2025 +0000
+
+    Fix import paths
+
+[33mcommit 586ef62490a08e231a788d4e48e5f04a8f3451e8[m
+Author: Gustavo M.S <33518950+Gustavo-MS@users.noreply.github.com>
+Date:   Wed Mar 12 21:02:19 2025 +0000
+
+    Add quotes game and show all available characters in dropdown
+
+[33mcommit 883d4ed15f7f4ffdf2160001e444d4fbc4b04d9b[m
+Author: Gustavo M.S <33518950+Gustavo-MS@users.noreply.github.com>
+Date:   Wed Mar 12 20:52:25 2025 +0000
+
+    Show all available characters on search focus, add character images

@@ -174,7 +174,7 @@ export const characters: Character[] = [
     region: "Essos",
     firstAppearance: "The North Remembers",
     lastAppearance: "The Long Night",
-    image: "/characters/melissandre.jpg"
+    image: "/characters/melisandre.jpg"
   },
   {
     id: 16,
