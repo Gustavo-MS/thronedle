@@ -98,7 +98,7 @@ export default function QuoteGame() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-6 bg-black/80 rounded-lg shadow-2xl backdrop-blur-sm mt-8">
+    <div className="max-w-6xl mx-auto p-6 bg-black/80 rounded-lg shadow-2xl backdrop-blur-sm">
       <h2 className="text-3xl font-bold text-center mb-8 text-yellow-500 font-serif">Quote of the Day</h2>
       
       <div className="mb-8 p-6 bg-gray-900/50 rounded-lg border-2 border-gray-700">
