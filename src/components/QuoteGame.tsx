@@ -102,7 +102,7 @@ export default function QuoteGame() {
       <h2 className="text-3xl font-bold text-center mb-8 text-yellow-500 font-serif">Quote of the Day</h2>
       
       <div className="mb-8 p-6 bg-gray-900/50 rounded-lg border-2 border-gray-700">
-        <p className="text-xl text-white text-center italic">"{dailyQuote.text}"</p>
+        <p className="text-xl text-white text-center italic">&ldquo;{dailyQuote.text}&rdquo;</p>
         <p className="text-sm text-gray-400 text-center mt-2">Season {dailyQuote.season}, Episode: {dailyQuote.episode}</p>
       </div>
 
