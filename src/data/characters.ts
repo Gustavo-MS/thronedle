@@ -174,7 +174,7 @@ export const characters: Character[] = [
     firstAppearance: "The North Remembers",
     lastAppearance: "The Long Night",
     actor: "Carice van Houten",
-    image: "/characters/melisandre.jpg"
+    image: "/characters/melissandre.jpg"
   },
   {
     id: 16,
