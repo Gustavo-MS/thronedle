@@ -28,6 +28,7 @@ export default function Game() {
   const [dailyCharacter, setDailyCharacter] = useState<Character | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState<Character[]>([]);
+  const [isFocused, setIsFocused] = useState(false);
   const [gameState, setGameState] = useState<GameState>({
     guesses: [],
     gameOver: false,
@@ -63,11 +64,25 @@ export default function Game() {
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-    if (query.length >= 2) {
+    if (query.length >= 2 || isFocused) {
       setSuggestions(searchCharacters(query, gameState.guesses));
-    } else {
+    } else if (!isFocused) {
       setSuggestions([]);
     }
+  };
+
+  const handleFocus = () => {
+    setIsFocused(true);
+    setSuggestions(searchCharacters('', gameState.guesses));
+  };
+
+  const handleBlur = () => {
+    setTimeout(() => {
+      setIsFocused(false);
+      if (searchQuery.length < 2) {
+        setSuggestions([]);
+      }
+    }, 200);
   };
 
   const handleGuess = (character: Character) => {
@@ -107,6 +122,8 @@ export default function Game() {
           type="text"
           value={searchQuery}
           onChange={(e) => handleSearch(e.target.value)}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
           placeholder="Enter a character name..."
           className="w-full p-3 border-2 border-gray-700 rounded-lg bg-gray-900 text-white placeholder-gray-400 focus:outline-none focus:border-yellow-500"
           disabled={gameState.gameOver}
@@ -114,7 +131,7 @@ export default function Game() {
         
         {/* Suggestions */}
         {suggestions.length > 0 && (
-          <div className="mt-2 border border-gray-700 rounded-lg bg-gray-900 shadow-xl overflow-hidden">
+          <div className="mt-2 border border-gray-700 rounded-lg bg-gray-900 shadow-xl overflow-hidden max-h-80 overflow-y-auto">
             {suggestions.map((character) => (
               <div
                 key={character.id}
