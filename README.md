@@ -2,7 +2,7 @@
 
 A Game of Thrones-themed daily guessing game inspired by Wordle. Test your knowledge of the Seven Kingdoms with two exciting game modes!
 
-🎮 Play now: [Thronedle](https://thronedle-cj5e7lqxv-gustavos-projects-51936f20.vercel.app)
+🎮 Play now: [Thronedle](https://thronedle.vercel.app/)
 
 ## Game Modes
 
