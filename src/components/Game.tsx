@@ -19,8 +19,8 @@ const columnHeaders = [
   { key: 'name', label: 'Character' },
   { key: 'house', label: 'House' },
   { key: 'status', label: 'Status' },
-  { key: 'title', label: 'Title' },
-  { key: 'actor', label: 'Actor' },
+  { key: 'gender', label: 'Gender' },
+  { key: 'region', label: 'Region' },
 ];
 
 export default function Game() {
@@ -160,7 +160,7 @@ export default function Game() {
               </div>
               <span className="text-white font-medium truncate">{guess.name}</span>
             </div>
-            {['house', 'status', 'title', 'actor'].map((prop) => (
+            {['house', 'status', 'gender', 'region'].map((prop) => (
               <div
                 key={prop}
                 className={`p-3 rounded-lg ${getHintColor(guess, prop as keyof Character)} text-white min-h-[5rem] flex items-center justify-center text-center`}
