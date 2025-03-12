@@ -211,9 +211,14 @@ export const getDailyCharacter = (): Character => {
   return characters[index];
 };
 
-export const searchCharacters = (query: string): Character[] => {
+export const searchCharacters = (query: string, previousGuesses: Character[] = []): Character[] => {
   const lowercaseQuery = query.toLowerCase();
-  return characters.filter(character =>
-    character.name.toLowerCase().includes(lowercaseQuery)
-  ).slice(0, 5);
+  const guessedIds = new Set(previousGuesses.map(char => char.id));
+  
+  return characters
+    .filter(character => 
+      character.name.toLowerCase().includes(lowercaseQuery) &&
+      !guessedIds.has(character.id)
+    )
+    .slice(0, 5);
 }; 

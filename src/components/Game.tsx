@@ -64,7 +64,7 @@ export default function Game() {
   const handleSearch = (query: string) => {
     setSearchQuery(query);
     if (query.length >= 2) {
-      setSuggestions(searchCharacters(query));
+      setSuggestions(searchCharacters(query, gameState.guesses));
     } else {
       setSuggestions([]);
     }
