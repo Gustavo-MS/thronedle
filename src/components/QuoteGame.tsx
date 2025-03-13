@@ -99,7 +99,7 @@ export default function QuoteGame() {
 
   return (
     <div className="max-w-6xl mx-auto p-3 sm:p-6 bg-black/80 rounded-lg shadow-2xl backdrop-blur-sm">
-      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-8 text-yellow-500 got-font">Quote of the Day</h2>
+      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-8 text-yellow-500">Daily Quote</h2>
       
       <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-gray-900/50 rounded-lg border-2 border-gray-700">
         <p className="text-base sm:text-xl text-white text-center italic">&ldquo;{dailyQuote.text}&rdquo;</p>
@@ -165,18 +165,6 @@ export default function QuoteGame() {
           <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-yellow-500">
             {gameState.won ? 'You Won!' : 'Game Over!'}
           </h2>
-          <button
-            onClick={() => {
-              const date = new Date();
-              navigator.clipboard.writeText(
-                `Thronedle Quote ${date.getUTCFullYear()}-${date.getUTCMonth() + 1}-${date.getUTCDate()}\n` +
-                `${gameState.won ? gameState.guesses.length : 'X'}/3 guesses`
-              );
-            }}
-            className="px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base bg-yellow-500 text-black font-bold rounded-lg hover:bg-yellow-400 transition-colors"
-          >
-            Share Result
-          </button>
         </div>
       )}
     </div>

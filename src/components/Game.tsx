@@ -114,7 +114,7 @@ export default function Game() {
 
   return (
     <div className="max-w-6xl mx-auto p-3 sm:p-6 bg-black/80 rounded-lg shadow-2xl backdrop-blur-sm">
-      <h1 className="text-3xl sm:text-5xl font-bold text-center mb-4 sm:mb-8 text-yellow-500 got-font">Thronedle</h1>
+      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-8 text-yellow-500">Daily Character</h2>
       
       {/* Game input */}
       <input
@@ -210,21 +210,9 @@ export default function Game() {
               />
             </div>
           </div>
-          <p className="text-base sm:text-xl text-white mb-4">
+          <p className="text-base sm:text-xl text-white">
             The character was: <span className="font-bold text-yellow-500">{dailyCharacter?.name}</span>
           </p>
-          <button
-            onClick={() => {
-              const date = new Date();
-              navigator.clipboard.writeText(
-                `Thronedle ${date.getUTCFullYear()}-${date.getUTCMonth() + 1}-${date.getUTCDate()}\n` +
-                `${gameState.won ? gameState.guesses.length : 'X'}/8 guesses`
-              );
-            }}
-            className="px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base bg-yellow-500 text-black font-bold rounded-lg hover:bg-yellow-400 transition-colors"
-          >
-            Share Result
-          </button>
         </div>
       )}
     </div>
