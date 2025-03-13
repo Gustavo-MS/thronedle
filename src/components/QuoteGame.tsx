@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Character, Quote, getDailyQuote, searchCharacters } from '../data/characters';
+import { Character, Quote, getDailyQuote, searchCharacters, characters } from '../data/characters';
 
 interface QuoteGameState {
   guesses: Character[];
@@ -18,6 +18,7 @@ const getQuoteStorageKey = () => {
 export default function QuoteGame() {
   const [isClient, setIsClient] = useState(false);
   const [dailyQuote, setDailyQuote] = useState<Quote | null>(null);
+  const [quoteCharacter, setQuoteCharacter] = useState<Character | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState<Character[]>([]);
   const [isFocused, setIsFocused] = useState(false);
@@ -36,6 +37,10 @@ export default function QuoteGame() {
     
     const quote = getDailyQuote();
     setDailyQuote(quote);
+    
+    // Find the character who said the quote
+    const character = characters.find(c => c.id === quote.characterId);
+    setQuoteCharacter(character || null);
     
     const savedState = localStorage.getItem(getQuoteStorageKey());
     if (savedState) {
@@ -82,7 +87,7 @@ export default function QuoteGame() {
 
     const newGuesses = [...gameState.guesses, character];
     const won = character.id === dailyQuote?.characterId;
-    const gameOver = won || newGuesses.length >= 3;
+    const gameOver = won || newGuesses.length >= 5;
 
     setGameState({
       guesses: newGuesses,
@@ -107,7 +112,7 @@ export default function QuoteGame() {
       </div>
 
       {/* Game input */}
-      <p className="text-sm sm:text-base text-white mb-2">Who said this quote? ({3 - gameState.guesses.length} guesses remaining)</p>
+      <p className="text-sm sm:text-base text-white mb-2">Who said this quote? ({5 - gameState.guesses.length} guesses remaining)</p>
       <input
         type="text"
         value={searchQuery}
@@ -162,9 +167,22 @@ export default function QuoteGame() {
       {/* Game Over Message */}
       {gameState.gameOver && (
         <div className="mt-4 sm:mt-8 text-center bg-gray-900/90 p-4 sm:p-8 rounded-lg border border-gray-700">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-yellow-500">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-4 text-yellow-500">
             {gameState.won ? 'You Won!' : 'Game Over!'}
           </h2>
+          <div className="mb-4 sm:mb-6 flex justify-center">
+            <div className="w-24 h-24 sm:w-40 sm:h-40 relative rounded-lg overflow-hidden">
+              <Image
+                src={quoteCharacter?.image || ''}
+                alt={quoteCharacter?.name || ''}
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+          <p className="text-base sm:text-xl text-white">
+            The character was: <span className="font-bold text-yellow-500">{quoteCharacter?.name}</span>
+          </p>
         </div>
       )}
     </div>
